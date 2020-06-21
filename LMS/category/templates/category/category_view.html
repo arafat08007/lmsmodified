@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} || {{ block.super }}{% endblock title %}
+
+{% block content %}
+    <div class="preloader">
+        <div class="sk-double-bounce">
+            <div class="sk-child sk-double-bounce1"></div>
+            <div class="sk-child sk-double-bounce2"></div>
+        </div>
+    </div>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+            <div class="mdk-drawer-layout__content">
+
+
+                <div class="page-section">
+                    <div class="container page__container">
+
+
+                        <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-24pt"
+                             style="white-space: nowrap;">
+                            <small class="flex text-muted text-headings text-uppercase mr-3 mb-2 mb-sm-0">Displaying 4
+                                out of 10 courses</small>
+                            <div class="w-auto ml-sm-auto table d-flex align-items-center mb-2 mb-sm-0">
+                                <small class="text-muted text-headings text-uppercase mr-3 d-none d-sm-block">Sort
+                                    by</small>
+
+                                <a href="#" class="sort desc small text-headings text-uppercase">Newest</a>
+
+                                <a href="#" class="sort small text-headings text-uppercase ml-2">Popularity</a>
+
+                            </div>
+
+                            <a href="#" data-target="#library-drawer" data-toggle="sidebar"
+                               class="btn btn-sm btn-white ml-sm-16pt">
+                                <i class="material-icons icon--left">tune</i> Filters
+                            </a>
+
+                        </div>
+
+
+                        <div class="page-separator">
+                            <div class="page-separator__text">Popular Courses</div>
+                        </div>
+
+
+                        <div class="row card-group-row">
+                            {% for course_content in category_context %}
+                                <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                                    <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay mdk-reveal js-mdk-reveal card-group-row__card"
+                                         data-overlay-onload-show data-popover-onload-show data-force-reveal
+                                         data-partial-height="44" data-toggle="popover" data-trigger="click">
+
+
+                                        <a href="{{ course_content.get_absolute_url }}" class="js-image" data-position="">
+                                            <img src="{{ course_content.course_image.url }}"
+                                                 alt="course" width="200" , height="200">
+                                            <span class="overlay__content align-items-start justify-content-start">
+                                                <span class="overlay__action card-body d-flex align-items-center">
+                                                    <i class="material-icons mr-4pt">play_circle_outline</i>
+                                                    <span class="card-title text-white">Preview</span>
+                                                </span>
+                                            </span>
+                                        </a>
+
+                                        <div class="mdk-reveal__content">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex">
+                                                        <a class="card-title"
+                                                           href="{{ course_content.get_absolute_url }}">{{ course_content.title }}</a>
+                                                        <small class="text-50 font-weight-bold mb-4pt">{{ course_content.instructor_id }}</small>
+                                                    </div>
+                                                    <a href="fixed-student-course.html" data-toggle="tooltip"
+                                                       data-title="Remove Favorite" data-placement="top"
+                                                       data-boundary="window"
+                                                       class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <div class="rating flex">
+                                                        <span class="rating__item"><span
+                                                                class="material-icons">star</span></span>
+                                                        <span class="rating__item"><span
+                                                                class="material-icons">star</span></span>
+                                                        <span class="rating__item"><span
+                                                                class="material-icons">star</span></span>
+                                                        <span class="rating__item"><span
+                                                                class="material-icons">star</span></span>
+                                                        <span class="rating__item"><span
+                                                                class="material-icons">star_border</span></span>
+                                                    </div>
+                                                    <small class="text-50">6 hours</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popoverContainer d-none">
+                                        <div class="media">
+                                            <div class="media-left mr-12pt">
+                                                <img src="{{ course_content.course_image.url }}" width="40" height="40"
+                                                     alt="Angular" class="rounded">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="card-title mb-0">{{ course_content.title }}</div>
+                                                <p class="lh-1 mb-0">
+                                                    <span class="text-black-50 small">with</span>
+                                                    <span class="text-black-50 small font-weight-bold">{{ course_content.instructor_id }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <p class="my-16pt text-black-70">{{ course_content.course_description }}</p>
+
+                                        <div class="mb-16pt">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small>Fundamentals of working
+                                                    with
+                                                    Angular</small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small>Create complete Angular
+                                                    applications</small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small>Working with the Angular
+                                                    CLI</small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small>Understanding Dependency
+                                                    Injection</small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small>Testing with
+                                                    Angular</small>
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="d-flex align-items-center mb-4pt">
+                                                    <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+                                                    <p class="flex text-black-50 lh-1 mb-0">
+                                                        <small>{{ course_content.course_complete_duration }}</small></p>
+                                                </div>
+                                                <div class="d-flex align-items-center mb-4pt">
+                                                    <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                    <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small>
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                    <p class="flex text-black-50 lh-1 mb-0">
+                                                        <small>{{ course_content.created_at }}</small></p>
+                                                </div>
+                                            </div>
+                                            <div class="col text-right">
+                                                <a href="fixed-student-course.html" class="btn btn-primary">Watch
+                                                    trailer</a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Sidebar -->
+            {% include 'courses/snippets/sidebar.html' %}
+            <!-- / Sidebar -->
+        </div>
+    </div>
+
+
+{% endblock %}

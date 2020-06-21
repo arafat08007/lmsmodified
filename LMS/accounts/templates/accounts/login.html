@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Login || {{ block.super }}{% endblock title %}
+
+{% block content %}
+    <div class="pt-32pt pt-sm-64pt pb-32pt">
+                <div class="container page__container">
+                    <div class="col-md-5 p-0 mx-auto">
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                            <p {% if message.tags %} class="text-center {{ message.tags }}"{% endif %}>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% include 'accounts/snippets/login_form.html' %}
+                </div>
+            </div>
+            <!-- Login With Social Media -->
+            {% include 'accounts/snippets/login-with-social-media.html' %}
+            <!-- Login With Social Media -->
+{% endblock %}

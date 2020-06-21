@@ -1,0 +1,33 @@
+{% load widget_tweaks %}
+
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+{{ form.media }}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label class="form-label" for="email">{{ field.label_tag }}</label>
+            {% if form.is_bound %}
+                {% if field.errors %}
+                    {% render_field field class="form-label is-invalid" %}
+                    {% for error in field.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% render_field field class="form-control form-control-lg is-valid" %}
+                {% endif %}
+            {% else %}
+                <div class="form-group mb-24p">
+                    {% render_field field class="form-control form-control-lg" %}
+                </div>
+            {% endif %}
+        </div><!-- end of form -->
+    {% endfor %}
+    <div class="">
+        <button type="submit" class="btn btn-outline-secondary mb-24pt mb-sm-0">{{ title }}</button>
+    </div>
+</form>

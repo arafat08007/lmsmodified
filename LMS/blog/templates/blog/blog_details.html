@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }} || {{ block.super }}{% endblock title %}
+
+
+{% block content %}
+    <div>
+        <div class="page-section bg-alt border-bottom-2">
+            <div class="container page__container">
+
+                <div class="d-flex flex-column flex-lg-row align-items-center">
+                    <div class="d-flex flex-column flex-md-row align-items-center align-items-md-start flex mb-16pt mb-lg-0 text-center text-md-left">
+                        <div class="avatar overlay overlay--primary mb-16pt mb-md-0 mr-md-16pt">
+                            <img src="{{ c_blog.cover_image.url }}" class="avatar-img rounded" alt="lesson">
+                            <div class="overlay__content"></div>
+                        </div>
+                        <div class="flex">
+                            <h1 class="h2 measure-lead-max mb-16pt">{{ c_blog.title }}</h1>
+                            <div class="d-flex align-items-center">
+                                <a href="fixed-teacher-profile.html" class="avatar avatar-sm mr-12pt">
+                                    <img src="{{ c_blog.user.image.url}}" alt="author"
+                                         class="avatar-img rounded-circle">
+                                </a>
+                                <div class="mr-16pt">
+                                    <a href="fixed-teacher-profile.html" class="card-title">{{ c_blog.user.first_name }} {{ c_blog.user.last_name }}</a>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-50 mr-2">{{ c_blog.timestamp|date:'F j, Y' }}</small>
+                                        <a href="" class="text-50"><small>Liked</small></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="" class="text-50 d-flex align-items-center text-decoration-0"><i
+                                            class="material-icons icon--left">favorite_border</i> 3</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="ml-lg-16pt">
+                        <a href="fixed-blog.html" class="btn btn-light">Blog</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="page-section border-bottom-2">
+            <div class="container page__container">
+
+                <div class="row">
+                    <div class="col-lg-8">
+
+                        <div class="mb-24pt">
+                            {% for tag in c_blog.tags.all %}
+                            <a href="" class="chip chip-outline-secondary">{{ tag.tag_name }}</a>
+                            {% endfor %}
+                        </div>
+
+                        <div>{{ c_blog.content | safe }}</div>
+
+                        <!-- Start Comments -->
+                        {% include 'blog/snippets/comments.html' %}
+                        <!-- / End Start Comments -->
+                    </div>
+                    <div class="col-lg-4">
+
+                        <div class="page-separator">
+                            <div class="page-separator__text">Author</div>
+                        </div>
+
+                        <div class="media align-items-center mb-16pt">
+                                <span class="media-left mr-16pt">
+                                    <img src="{{ c_blog.user.image.url }}" width="40" alt="avatar"
+                                         class="rounded-circle">
+                                </span>
+                            <div class="media-body">
+                                <a class="card-title m-0" href="fixed-teacher-profile.html">{{ c_blog.user.first_name }} {{ c_blog.user.last_name }}</a>
+                                <p class="text-50 lh-1 mb-0">Instructor</p>
+                            </div>
+                        </div>
+                        <p class="text-70">{{ c_blog.user.about }}</p>
+
+                        <a href="fixed-teacher-profile.html" class="btn btn-white mb-24pt">Follow</a>
+
+                        <!-- Recommended -->
+                        {% include 'blog/snippets/recommended.html' %}
+                        <!-- / End of Recommended -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Start FEEDBACK -->
+        {% include 'blog/snippets/feedback.html' %}
+        <!-- / End Start FEEDBACK -->
+    </div>
+    </div>
+{% endblock %}

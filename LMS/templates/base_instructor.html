@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+          rel="stylesheet">
+
+    <!-- css -->
+    {% include 'base/css.html' %}
+
+
+</head>
+
+<body class="layout-app ">
+
+<div class="preloader">
+    <div class="sk-double-bounce">
+        <div class="sk-child sk-double-bounce1"></div>
+        <div class="sk-child sk-double-bounce2"></div>
+    </div>
+</div>
+
+<div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
+
+        <!-- Header -->
+        {% include 'base_instructor/header.html' %}
+        <!-- // END Header -->
+
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+
+        <!-- Footer -->
+        {% include 'base/footer.html' %}
+        <!-- End Footer -->
+    </div>
+    <!-- // END drawer-layout__content -->
+
+
+    <!-- drawer -->
+    {% include 'base_instructor/navbar.html' %}
+    <!-- // END drawer -->
+
+
+</div>
+<!-- // END drawer-layout -->
+
+{% include 'base/js.html' %}
+
+</body>
+
+</html>

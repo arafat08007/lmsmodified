@@ -1,0 +1,56 @@
+<div class="mdk-drawer js-mdk-drawer " id="library-drawer" data-align="end">
+    <div class="mdk-drawer__content top-navbar">
+        <div class="sidebar sidebar-light sidebar-right py-16pt" data-perfect-scrollbar
+             data-perfect-scrollbar-wheel-propagation="true">
+
+            <div class="d-flex align-items-center mb-24pt  d-lg-none">
+                <form action="index.html" class="search-form search-form--light mx-16pt pr-0 pl-16pt">
+                    <input type="text" class="form-control pl-0" placeholder="Search">
+                    <button class="btn" type="submit"><i class="material-icons">search</i></button>
+                </form>
+            </div>
+
+            <div class="sidebar-heading">Category</div>
+            <ul class="sidebar-menu">
+                {% for cat in category_list %}
+                <li class="sidebar-menu-item active">
+                    <a href="{{ cat.get_absolute_url }}" class="sidebar-menu-button">
+                        <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">code</span>
+                        <span class="sidebar-menu-text">{{ cat.category }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="sidebar-heading">Subscription</div>
+            <div class="sidebar-block">
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="" id="filtersCheck07" checked="">
+                        <label class="custom-control-label" for="filtersCheck07">All</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="" id="filtersCheck08">
+                        <label class="custom-control-label" for="filtersCheck08">Free</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="" id="filtersCheck09">
+                        <label class="custom-control-label" for="filtersCheck09">Beginner</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="" id="filtersCheck10">
+                        <label class="custom-control-label" for="filtersCheck10">Advanced</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

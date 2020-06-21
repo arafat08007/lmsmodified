@@ -1,0 +1,60 @@
+<div class="page-section">
+            <div class="container page__container">
+                <div class="page-headline text-center">
+                    <h2>Feedback</h2>
+                    <p class="lead measure-lead mx-auto text-black-70">What other students turned professionals have to
+                        say about us after learning with us and reaching their goals.</p>
+                </div>
+
+
+                <div class="position-relative carousel-card col-lg-8 p-0 mx-auto">
+                    <div class="row d-block js-mdk-carousel" id="carousel-feedback">
+                        <a class="carousel-control-next js-mdk-carousel-control mt-n24pt" href="#carousel-feedback"
+                           role="button" data-slide="next">
+                            <span class="carousel-control-icon material-icons"
+                                  aria-hidden="true">keyboard_arrow_right</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <div class="mdk-carousel__content">
+
+                            {% if visitor_feedback %}
+                                {% for feedback in visitor_feedback %}
+
+                                    <div class="col-12 col-md-6">
+
+                                        <div class="card card-feedback card-body">
+                                            <blockquote class="blockquote mb-0">
+                                                <p class="text-70 small mb-0">{{ feedback.testimonial }}</p>
+                                            </blockquote>
+                                        </div>
+                                        <div class="media ml-12pt">
+                                            <div class="media-left mr-12pt">
+                                                <a href="fixed-student-profile.html" class="avatar avatar-sm">
+                                                    <!-- <img src="assets/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
+                                                    <span class="avatar-title rounded-circle">FB</span>
+                                                </a>
+                                            </div>
+                                            <div class="media-body media-middle">
+                                                <a href="fixed-student-profile.html" class="card-title">{{ feedback.visitor_name }}</a>
+                                                <div class="rating mt-4pt">
+
+                                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                                    <span class="rating__item"><span
+                                                            class="material-icons">star_border</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
